@@ -30,7 +30,7 @@ const addUser = async (req, res) => {
         const savedUser = await user.save();
         res.status(201).json({
             message: "User added successfully!",
-            user: savedUser
+            user: user
         });
     } catch (err) {
         console.error(err);
@@ -84,16 +84,19 @@ const deleteUser = async (req, res) => {
 }
 const login = async (req, res) => {
     const { email, password } = req.body;
+
     User.findOne({ email: email }).then((data) => {
 
 
-
+        const id = req.params._id;
         if (data) {
             bcrypt.compare(password, data.password)
-                .then((result) => {
+                .then((result, id) => {
                     if (result) {
                         res.status(200).json({
-                            message: "Login successful!"
+                            message: "Login successful!",
+                            id: data._id
+
                         });
                     } else {
                         res.status(401).json({

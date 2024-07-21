@@ -94,7 +94,8 @@ const login = async (req, res) => {
                 res.status(200).json({
                     message: "Login successfull",
                     token,
-                    id: data._id
+                    id: data._id,
+
 
                 })
 
