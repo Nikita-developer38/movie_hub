@@ -42,44 +42,52 @@ const MovieCard = ({ title, poster_path, story, actors, release_date, year_if_re
 
     return (
         <Box padding={"12px"} display={'flex'} justifyContent={'center'}   >
-            <Card sx={{
-                width: 345,
+            <div onClick={() => handleClickOpen('paper')}>
+                <Card sx={{
+                    width: 345,
 
-                borderRadius: 5,
-                ":hover": {
-                    boxShadow: "10px 10px 20px #ccc"
-                }
-            }}
-                onClick={() => handleClickOpen('paper')}
+                    borderRadius: 5,
+                    ":hover": {
+                        boxShadow: "10px 10px 20px #ccc"
+                    }
+                }}
+                    onClick={(e) => {
+                        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'ICONBUTTON') {
+                            handleClickOpen('paper')();
+                        }
+                    }}
 
-            >
-                <CardHeader
 
-                    title={title}
-                    subheader={release_date}
-                />
-                <CardMedia
-                    component="img"
-                    height="194"
-                    image={poster_path}
-                    alt={title}
-                />
-                <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                        {summary}
-                    </Typography>
-                </CardContent>
 
-                <CardActions position={'fixed'}>
-                    <Typography>Run time :{runtime} min</Typography>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                        <ShareIcon />
-                    </IconButton>
-                </CardActions>
-            </Card>
+                >
+                    <CardHeader
+
+                        title={title}
+                        subheader={release_date}
+                    />
+                    <CardMedia
+                        component="img"
+                        height="194"
+                        image={poster_path}
+                        alt={title}
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            {summary}
+                        </Typography>
+                    </CardContent>
+
+                    <CardActions>
+                        <Typography>Run time :{runtime} min</Typography>
+                        <IconButton aria-label="add to favorites">
+                            <FavoriteIcon />
+                        </IconButton>
+                        <IconButton aria-label="share">
+                            <ShareIcon />
+                        </IconButton>
+                    </CardActions>
+                </Card>
+            </div>
             <Dialog sx={{
                 backgroundImage: `url(${poster_path})`,
                 backgroundSize: 'cover',

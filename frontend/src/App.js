@@ -8,10 +8,14 @@ import Movies from './components/Movies/Movies';
 import Admin from './components/Admin/Admin';
 import Auth from './components/Auth/Auth';
 import AdminAuth from './components/Auth/AdminAuth';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { userActions, adminActions } from './store';
+
 
 
 function App() {
+  const dispatch = useDispatch()
   const isUserLoggedIn = useSelector((state) => {
     return state.user.isLoggedIn;
   })
@@ -20,6 +24,18 @@ function App() {
   })
   console.log("isAdminLoggedIn", isAdminLoggedIn);
   console.log("isUserLoggedIn", isUserLoggedIn);
+  useEffect(() => {
+    if (localStorage.getItem('userId')) {
+      dispatch(userActions.login());
+
+    }
+    else if (localStorage.getItem('adminId')) {
+      dispatch(adminActions.login());
+
+    }
+
+
+  }, [])
 
 
 

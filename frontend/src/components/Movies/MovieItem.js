@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Card, CardHeader, CardActions, Button, IconButton } from '@mui/material';
 import { Favorite as FavoriteIcon, Share as ShareIcon } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +26,7 @@ const MovieItem = ({ title, releaseDate, posterUrl, id }) => {
                         <FavoriteIcon />
                     </IconButton>
 
-                    <Button margin={'auto'} justifyContent={'center'} sx={{ bgcolor: "red", color: "white" }}>
+                    <Button LinkComponent={Link} to={`/booking/${id}`} margin={'auto'} justifyContent={'center'} sx={{ bgcolor: "red", color: "white" }}>
                         Book Now
                     </Button>
                     <IconButton aria-label="share">

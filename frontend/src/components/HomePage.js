@@ -28,7 +28,7 @@ const HomePage = () => {
 
             </Box>
             <Box display={'flex'} width={'100%'} justifyContent={'center'} flexWrap={'wrap'}>
-                {movies.map((movie, index) => <MovieItem id={movie.id} title={movie.title} releaseDate={movie.releaseDate} posterUrl={movie.posterUrl} key={index} />)}
+                {movies.map((movie, index) => <MovieItem id={movie._id} title={movie.title} releaseDate={movie.releaseDate} posterUrl={movie.posterUrl} key={index} />)}
             </Box>
             <Box display={'flex'} padding={5} margin={'auto'}>
                 <Button LinkComponent={Link} to='/movies' variant='outlined' sx={{ margin: 'auto', color: '#E50914' }}> View All Movies</Button>
