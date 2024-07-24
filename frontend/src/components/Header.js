@@ -66,7 +66,7 @@ const Header = () => {
                             </div>}
                         {isUserLoggedIn && (
                             <div>
-                                <Tab LinkComponent={Link} to="/profile" label="Profile" />
+                                <Tab LinkComponent={Link} to="/userProfile" label="Profile" />
                                 <Tab LinkComponent={Link} onClick={() => logout()} to="/" label="Logout" />
                             </div>
                         )}

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Booking = require("../modules/Booking");
 const User = require("../modules/User");
-const Movie = require("../modules/Movies");
+const Movies = require("../modules/Movies");
 require("dotenv").config();
 const MONGODB_URL = process.env.MONGODB_URL;
 mongoose.connect(MONGODB_URL)
@@ -15,7 +15,7 @@ const createBooking = async (req, res) => {
     let existingMovie;
     let existingUser;
     try {
-        existingMovie = await Movie.findById(req.body.movie);
+        existingMovie = await Movies.findById(req.body.movie);
         existingUser = await User.findById(req.body.user);
     }
     catch (err) {
@@ -69,4 +69,28 @@ const getBookings = async (req, res) => {
     });
 }
 
-module.exports = { createBooking, getBookings }
+const deleteBooking = async (req, res, next) => {
+    const id = req.params.id;
+    let booking;
+    try {
+        booking = await Booking.findOneAndDelete(id).populate("user movie");
+        console.log(booking);
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await booking.user.bookings.pull(booking._id);
+        await booking.movie.bookings.pull(booking._id);
+        await booking.movie.save({ session });
+        await booking.user.save({ session });
+        session.commitTransaction();
+    } catch (err) {
+        return console.log(err);
+    }
+    if (!booking) {
+        return res.status(500).json({ message: "Unable to Delete" });
+    }
+    return res.status(200).json({ message: "Successfully Deleted" });
+};
+
+
+
+module.exports = { createBooking, getBookings, deleteBooking }

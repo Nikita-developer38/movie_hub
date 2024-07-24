@@ -16,10 +16,11 @@ const bookingSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    seatNumber: {
+    seatNumber: [{
         type: String,
+
         required: true
-    },
+    }],
 
     user: {
         type: mongoose.Types.ObjectId,
@@ -28,4 +29,5 @@ const bookingSchema = new mongoose.Schema({
     }
 
 });
-module.exports = mongoose.model('Booking', bookingSchema);
+const Movie = mongoose.model('Booking', bookingSchema);
+module.exports = Movie

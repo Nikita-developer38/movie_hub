@@ -11,6 +11,10 @@ import AdminAuth from './components/Auth/AdminAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { userActions, adminActions } from './store';
+import Booking from './components/Booking/Booking';
+import 'react-bootstrap'
+import Profile from './components/Profile/Profile';
+import AddMovie from './components/Movies/AddMovie';
 
 
 
@@ -50,6 +54,9 @@ function App() {
           <Route path='/admin' element={<Admin />} />
           <Route path='/auth' element={<Auth />} />
           <Route path='/adminAuth' element={<AdminAuth />} />
+          <Route path='/booking/:id' element={<Booking />} />
+          <Route path='/userProfile' element={<Profile />} />
+          <Route path="/addMovies" element={<AddMovie />} />
         </Routes>
       </section>
 

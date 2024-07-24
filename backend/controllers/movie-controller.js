@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require("dotenv").config();
 
 const createMovie = async (req, res) => {
-    const Authtoken = req.headers.authorization.split(" ")[1];
+    const Authtoken = req.headers.authorization ? req.headers.authorization.split(" ")[1] : null;
     if (!Authtoken) {
         return res.status(401).json({ message: "Unauthorized1" });
     }
@@ -70,7 +70,8 @@ const getMovieById = async (req, res) => {
     Movie.findById(id).then((data) => {
         res.status(200).json({
             message: "Movie found",
-            data
+            data: data
+
         });
     }).catch((error) => {
         res.status(500).json({
