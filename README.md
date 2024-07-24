@@ -37,5 +37,45 @@ The Movie Booking System is a full-stack web application that allows users to br
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/movie-booking-system.git
-   cd movie-booking-system
+   git clone [https://github.com/yourusername/movie-booking-system.git](https://github.com/Nikita-developer38/movie_hub/tree/master)
+   ````
+
+2.**Install frontend dependencies:**
+
+  ```sh
+  cd frontend
+  npm install
+  ````
+3.**Install backend dependencies:**
+
+  ```sh
+  cd backend
+  npm install
+  ````
+4.**Setup environment variables:**
+    Create a `.env` file in the server directory and add the following variables:
+  ```sh
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret_key
+   ````
+
+5.**Run the application:**
+
+  Open two terminal windows or tabs.
+
+  In the first terminal, start the backend server:
+
+```sh
+
+cd frontend
+npm start
+````
+
+In the second terminal, start the frontend server:
+
+```sh
+cd client
+npm start
+````
+
+The application should now be running on http://localhost:3000 (frontend) and http://localhost:5000 (backend).
