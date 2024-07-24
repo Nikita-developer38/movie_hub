@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Movie Booking System is a full-stack web application that allows users to browse and book movie tickets. Admins can manage movies, including adding and deleting movies. The project is built using the MERN stack, incorporating React, Material-UI (MUI), and Redux for the frontend, and Node.js, Express, and Mongoose for the backend. MongoDB is used as the database.
+The Movie Booking System is a full-stack web application (MERN)  that allows users to browse and book movie tickets. Admins can manage movies, including adding and deleting movies. The project is built using the MERN stack, incorporating React, Material-UI (MUI), and Redux for the frontend, and Node.js, Express, and Mongoose for the backend. MongoDB is used as the database.
 
 ## Features
 
@@ -37,7 +37,7 @@ The Movie Booking System is a full-stack web application that allows users to br
 1. **Clone the repository:**
 
    ```sh
-   git clone [https://github.com/yourusername/movie-booking-system.git](https://github.com/Nikita-developer38/movie_hub/tree/master)
+   git clone https://github.com/Nikita-developer38/movie_hub/tree/master
    ````
 
 2.**Install frontend dependencies:**
